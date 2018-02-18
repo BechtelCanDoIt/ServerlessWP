@@ -194,6 +194,7 @@ var handleStaticFile = function(staticFile, callback) {
  * Move the WordPress directory to /tmp so files can be written.
  */
 var setupWPDirectory = function() {
+    execSync('rm -rf /tmp/*');
     if (!fs.existsSync('/tmp/wp')) {
         fs.mkdirSync('/tmp/wp');
         try {
@@ -202,6 +203,12 @@ var setupWPDirectory = function() {
         catch (err) {
             console.log(err);
         }
+    }
+    if (!fs.existsSync('/tmp/php')) {
+        fs.mkdirSync('/tmp/php');
+    }
+    if (!fs.existsSync('/tmp/upload')) {
+        fs.mkdirSync('/tmp/upload');
     }
 };
 
